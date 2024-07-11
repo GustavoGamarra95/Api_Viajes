@@ -4,5 +4,6 @@
         "**/__pychahe__":true,
         "**/.pytest_cache": true,
         
-    }
+    },
+    "sqltools.useNodeRuntime": true
 }
