@@ -31,3 +31,4 @@ class LinksRepository:
         )
         links = cursor.fetchall()
         return links
+
