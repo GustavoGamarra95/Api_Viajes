@@ -10,7 +10,6 @@ class TripsRepository:
     def create_trip(self, trips_infos: Dict) -> None:
         cursor = self.__conn.cursor()
 
-        # Convertir start_date y end_date a objetos datetime usando el formato correcto
         start_date = datetime.datetime.strptime(trips_infos["start_date"], '%d-%m-%Y')
         end_date = datetime.datetime.strptime(trips_infos["end_date"], '%d-%m-%Y')
 

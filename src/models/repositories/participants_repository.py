@@ -6,7 +6,7 @@ class ParticipantsRepository:
     def __init__(self, conn: Connection) -> None:
         self.__conn = conn
 
-    def registry_participants(self, participants_infos: Dict) -> None:
+    def registry_participant(self, participants_infos: Dict) -> None:
         cursor = self.__conn.cursor()
         cursor.execute(
             '''
@@ -29,14 +29,14 @@ class ParticipantsRepository:
             '''
                 SELECT p.id, p.name, p.is_confirmed, e.email
                 from participants as p
-                JOIN emails_to_invite as e ON e.id = p.emails_to_id
+                JOIN emails_to_invite as e ON e.id = p.emails_to_invite_id
                 WHERE p.trip_id = ?
             ''', (trip_id,)
         )
         participants = cursor.fetchall()
         return participants
 
-    def update_participants_status(self, participants_id: str) -> None:
+    def update_participants_status(self, participants_id: str) -> None:  # Asegúrate de que el nombre es correcto
         cursor = self.__conn.cursor()
         cursor.execute(
             '''
